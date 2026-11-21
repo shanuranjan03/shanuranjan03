@@ -1,22 +1,24 @@
+
 name: Generate Snake Animation
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # runs once a day
-  workflow_dispatch: {}    # lets you run it manually too
+    - cron: "0 0 * * *"
+  workflow_dispatch:
   push:
     branches:
-      - main               # regenerates whenever you push to main
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   generate:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
+
     steps:
       - name: Generate snake animation
         uses: Platane/snk@v3
-        id: snake-gif
         with:
           github_user_name: shanuranjan03
           outputs: |
